@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Copyright 2014 Bruce Ingalls -->
+<html>
+    <head>
+        <title>bookmark name</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-app="bookmarkApp">
+        <h1>Bookmark Manager</h1>
+
+        <div ng-controller="BmCtrl">
+            {{ bmsg}}
+        </div>
+
+        <div ng-controller="EmailCtrl">
+            <input type="email" ng-model="email" placeholder="Email Address" ng-blur="addEmail();">
+            {{ emailmsg}}
+        </div>
+
+        <div ng-controller="AddCtrl">
+            <button ng-click="addBm();">Add Bookmark</button>
+            {{ addmsg}}
+        </div>
+
+        <div ng-controller="ListCtrl" ng-init="listBm();">
+            <ul>
+                <li class="animate-repeat" ng-repeat="msg in listmsg| filter:q">
+                    <a href="{{msg.uri}}">{{msg.title}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-cookies.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-md5.min.js"></script>
+        <script src="js/bookmarks.js"></script>
+    </body>
+</html>
