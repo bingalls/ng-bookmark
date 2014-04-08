@@ -5,27 +5,33 @@
         <title>bookmark name</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+          [ng\:cloak], [ng-cloak], .ng-cloak { display: none !important; }
+        </style>
     </head>
     <body ng-app="bookmarkApp">
         <h1>Bookmark Manager</h1>
 
-        <div ng-controller="BmCtrl">
-            {{ bmsg}}
+        <div ng-controller="BmCtrl" class="ng-cloak">
+            {{bmsg}}
         </div>
 
-        <div ng-controller="EmailCtrl">
-            <input type="email" ng-model="email" placeholder="Email Address" ng-blur="addEmail();">
-            {{ emailmsg}}
+        <div ng-controller="EmailCtrl" class="ng-cloak">
+            <input type="email" ng-model="email" placeholder="Email Address"
+                  ng-blur="addEmail();" />
+            <!--ToDo add ng-keypress-->
+            {{emailmsg}}
         </div>
 
-        <div ng-controller="AddCtrl">
+        <div ng-controller="AddCtrl" class="ng-cloak">
             <button ng-click="addBm();">Add Bookmark</button>
-            {{ addmsg}}
+            {{addmsg}}
         </div>
 
         <div ng-controller="ListCtrl" ng-init="listBm();">
             <ul>
-                <li class="animate-repeat" ng-repeat="msg in listmsg| filter:q">
+                <!--ToDo explain fliter:q-->
+                <li class="animate-repeat ng-cloak" ng-repeat="msg in listmsg| filter:q">
                     <a href="{{msg.uri}}">{{msg.title}}</a>
                 </li>
             </ul>

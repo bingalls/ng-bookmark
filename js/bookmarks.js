@@ -20,6 +20,7 @@ angular.module('controllers', [])
         $http({method: 'GET', url: './views/add.php'})
           .success(function () {
             $scope.addmsg = 'bookmark added';
+            //listBm();  //requires a service
         }).error(function () {
             $scope.addmsg = 'Failed to add bookmark';
         });
@@ -39,6 +40,7 @@ angular.module('controllers', [])
         $cookies.bmid = hash;   //must match app/bookmark.php
       };
     }])
+  //ToDo: turn this into a service
   .controller('ListCtrl', ['$scope', '$http', function ($scope, $http) {
       "use strict";
         $scope.listBm = function() {
